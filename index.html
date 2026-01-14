@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poultry Counter App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="app-title">Poultry Counter</h1>
+            <button id="theme-toggle">Toggle Dark Mode</button>
+            <select id="language-select">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+            </select>
+        </header>
+        <main>
+            <video id="video" autoplay></video>
+            <canvas id="canvas" style="display:none;"></canvas>
+            <div class="controls">
+                <button id="start-btn" class="btn">Start Counting</button>
+                <button id="stop-btn" class="btn" disabled>Stop Counting</button>
+                <button id="manual-count-btn" class="btn">Manual Count</button>
+                <button id="ai-count-btn" class="btn">AI Count</button>
+            </div>
+            <div class="display">
+                <p id="count-display">Count: 0</p>
+                <p id="accuracy-display">Accuracy: N/A</p>
+            </div>
+            <div id="data-list">
+                <h3>Stored Counts</h3>
+                <ul id="count-history"></ul>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+    <script src="script.js"></script>
+</body>
+</html>
