@@ -4,39 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poultry Counter App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1 id="app-title">Poultry Counter</h1>
-            <button id="theme-toggle">Toggle Dark Mode</button>
-            <select id="language-select">
-                <option value="en">English</option>
-                <option value="hi">Hindi</option>
-            </select>
+<body class="bg-light">
+    <div class="container-fluid">
+        <header class="d-flex justify-content-between align-items-center p-3 bg-primary text-white">
+            <h1 id="app-title" class="h4 mb-0">Poultry Counter</h1>
+            <div>
+                <button id="theme-toggle" class="btn btn-outline-light me-2"><i class="bi bi-moon"></i> Theme</button>
+                <select id="language-select" class="form-select d-inline-block w-auto">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </div>
         </header>
-        <main>
-            <video id="video" autoplay></video>
-            <canvas id="canvas" style="display:none;"></canvas>
-            <div class="controls">
-                <button id="start-btn" class="btn">Start Counting</button>
-                <button id="stop-btn" class="btn" disabled>Stop Counting</button>
-                <button id="manual-count-btn" class="btn">Manual Count</button>
-                <button id="ai-count-btn" class="btn">AI Count</button>
-            </div>
-            <div class="display">
-                <p id="count-display">Count: 0</p>
-                <p id="accuracy-display">Accuracy: N/A</p>
-            </div>
-            <div id="data-list">
-                <h3>Stored Counts</h3>
-                <ul id="count-history"></ul>
-            </div>
-        </main>
+        <div class="row">
+            <aside class="col-md-3 bg-white p-3 shadow-sm">
+                <h5 id="controls-title">Controls</h5>
+                <button id="start-btn" class="btn btn-success w-100 mb-2"><i class="bi bi-play"></i> <span id="start-text">Start Counting</span></button>
+                <button id="stop-btn" class="btn btn-danger w-100 mb-2" disabled><i class="bi bi-stop"></i> <span id="stop-text">Stop Counting</span></button>
+                <button id="manual-count-btn" class="btn btn-warning w-100 mb-2"><i class="bi bi-hand-index"></i> <span id="manual-text">Manual Count</span></button>
+                <button id="ai-count-btn" class="btn btn-info w-100 mb-2"><i class="bi bi-robot"></i> <span id="ai-text">AI Count</span></button>
+                <button id="reset-btn" class="btn btn-secondary w-100 mb-2"><i class="bi bi-arrow-clockwise"></i> <span id="reset-text">Reset</span></button>
+                <button id="export-btn" class="btn btn-outline-primary w-100"><i class="bi bi-download"></i> <span id="export-text">Export Data</span></button>
+            </aside>
+            <main class="col-md-9 p-3">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <div class="position-relative">
+                            <video id="video" autoplay class="w-100 rounded shadow"></video>
+                            <canvas id="canvas" class="position-absolute top-0 start-0 w-100 h-100" style="pointer-events: none;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="bi bi-hash"></i> <span id="count-label">Count</span></h5>
+                                <p class="display-4 text-primary" id="count-display">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="bi bi-check-circle"></i> <span id="accuracy-label">Accuracy</span></h5>
+                                <p class="display-6 text-success" id="accuracy-display">N/A</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h5 id="history-title">Count History</h5>
+                    <ul id="count-history" class="list-group"></ul>
+                </div>
+            </main>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
     <script src="script.js"></script>
 </body>
 </html>
